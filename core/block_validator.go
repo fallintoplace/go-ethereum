@@ -127,6 +127,8 @@ func (v *BlockValidator) ValidateBody(block *types.Block) error {
 				return fmt.Errorf("access list hash mismatch, computed: %x, remote: %x", computed, *block.Header().BlockAccessListHash)
 			} else if err := block.AccessList().Validate(block.GasLimit(), len(block.Transactions())); err != nil {
 				return fmt.Errorf("invalid block access list: %v", err)
+			} else if err := block.AccessList().ValidateSize(block.GasLimit()); err != nil {
+				return fmt.Errorf("invalid block access list: %v", err)
 			}
 		}
 	} else if block.Header().BlockAccessListHash != nil || block.AccessList() != nil {
