@@ -396,6 +396,7 @@ func processRequestsSystemCall(requests *[][]byte, rules params.Rules, evm *vm.E
 	requestsData[0] = requestType
 	copy(requestsData[1:], ret)
 	*requests = append(*requests, requestsData)
+	blockAccessList.Merge(bal)
 	return nil
 }
 
