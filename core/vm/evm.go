@@ -148,9 +148,6 @@ func NewEVM(blockCtx BlockContext, statedb StateDB, chainConfig *params.ChainCon
 		jumpDests:   newMapJumpDests(),
 		arena:       newArena(),
 	}
-	if !evm.chainRules.IsAmsterdam {
-		fmt.Println("DEBUG")
-	}
 	evm.precompiles = activePrecompiledContracts(evm.chainRules)
 
 	switch {
