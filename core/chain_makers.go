@@ -67,7 +67,6 @@ func (b *BlockGen) SetCoinbase(addr common.Address) {
 	}
 	b.header.Coinbase = addr
 	b.gasPool = NewGasPool(b.header.GasLimit)
-	b.bal = bal.NewConstructionBlockAccessList()
 }
 
 // SetExtra sets the extra data field of the generated block.
