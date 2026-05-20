@@ -798,7 +798,6 @@ func (st *stateTransition) execute() (*ExecutionResult, error) {
 			if take := min(need, st.gasRemaining.StateGas); take > 0 {
 				st.gasRemaining.StateGas -= take
 				st.gasRemaining.UsedStateGas += int64(take)
-				need -= take
 			}
 			if st.evm.Config.Tracer.HasGasHook() {
 				st.evm.Config.Tracer.EmitGasChange(prior.AsTracing(), st.gasRemaining.AsTracing(), tracing.GasChangeTxDataFloor)
